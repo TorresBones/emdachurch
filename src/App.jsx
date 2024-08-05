@@ -5,7 +5,10 @@ import {
   InMemoryCache,
   createHttpLink,
 } from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
+// import { setContext } from "@apollo/client/link/context";
+import authLink from './authLink';
+import Header from './components/header';
+import Footer from './components/footer';
 
 import './App.css';
 
@@ -14,16 +17,16 @@ const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
-const aunthLink = setContext((_, { headers }) => {
+// const authLink = setContext((_, { headers }) => {
 
-  const token = localStorage.getItem("id_token");
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : "",
-    },
-  };
-});
+//   const token = localStorage.getItem("id_token");
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: token ? `Bearer ${token}` : "",
+//     },
+//   };
+// });
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
