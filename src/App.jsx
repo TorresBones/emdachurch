@@ -7,10 +7,14 @@ import {
 } from "@apollo/client";
 // import { setContext } from "@apollo/client/link/context";
 import authLink from './authLink';
-import Header from './components/header';
-import Footer from './components/footer';
+import { Header } from './components/Header';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+import './styles/App.css';
 
 
 const httpLink = createHttpLink({
@@ -36,7 +40,8 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Header />
+      < Header />
+      < Navbar />
       < Outlet />
       < Footer />
     </ApolloProvider>
